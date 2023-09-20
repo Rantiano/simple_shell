@@ -1,11 +1,13 @@
 #include "shell.h"
 
 /**
- * get_commands - .
- * @mode: .
- * @file_name: .
- * @program_name: .
- * Return: .
+ * get_commands - Function obtains commands based on the specified mode.
+ * @mode: The mode of operation as in (interactive, piped, or file-based).
+ * @file_name: The name of the input file (used in NON_INTERACTIVE_FILE mode).
+ * @program_name: This is the name of the shell program.
+ *
+ * Return: An array of strings obtained based on the specified mode, or NULL
+ *         if an error occurs or if the specified mode is not recognized.
  */
 char **get_commands(int mode, char *file_name, char *program_name)
 {
@@ -28,8 +30,11 @@ char **get_commands(int mode, char *file_name, char *program_name)
 
 
 /**
- * piped_non_interactive - .
- * Return: .
+ * piped_non_interactive - Reads and processes piped non-interactive input.
+ *
+ * Return: An array of strings representing individual commands obtained from
+ *         the piped non-interactive input, or NULL if the input does not
+ *         contain valid commands or if there is an error during processing.
  */
 char **piped_non_interactive()
 {
@@ -76,9 +81,11 @@ char **piped_non_interactive()
 }
 
 /**
- * text_to_vector - .
- * @text: .
- * Return: .
+ * text_to_vector - Function converts a text into an array of strings.
+ * @text: Defines the input text to be split into multiple strings.
+ *
+ * Return: The last element of the array is NULL. If there are no newline
+ *         characters in the input text or if there is an allocation error.
  */
 char **text_to_vector(char *text)
 {
@@ -105,11 +112,15 @@ char **text_to_vector(char *text)
 	lines[i] = NULL;
 	return (lines);
 }
+
 /**
- * file_non_interactive - .
- * @file_name: .
- * @program_name: .
- * Return: .
+ * file_non_interactive - Reads and processes non-interactive input of a file.
+ * @file_name: The name of the input file that is to be processed.
+ * @program_name: The name of the shell program.
+ *
+ * Return: An array of strings representing individual commands obtained from
+ *         the non-interactive input file, or NULL if the file doesn't exist,
+ *         or if there are file operations issues or memory allocation.
  */
 char **file_non_interactive(char *file_name, char *program_name)
 {
@@ -147,7 +158,6 @@ char **file_non_interactive(char *file_name, char *program_name)
 	}
 	else
 	{
-		/*todo print error*/
 		print_cant_open(program_name, 0, file_name);
 		exit(127);
 	}

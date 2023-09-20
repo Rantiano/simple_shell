@@ -1,9 +1,12 @@
 #include "shell.h"
 
 /**
- * get_command_from_user - .
- * @current: .
- * Return: .
+ * get_command_from_user - Function reads a command line input from the user.
+ * @current: This is a pointer to the current working directory.
+ *
+ * Return: A pointer to the dynamically allocated input line by the user,
+ *         or NULL if the user enters an empty line,
+ *         or if an EOF condition is encountered.
  */
 char *get_command_from_user(list_path *current)
 {
@@ -30,10 +33,12 @@ char *get_command_from_user(list_path *current)
 
 	return (line);
 }
+
 /**
- * get_command_from_file - .
- * @file: .
- * Return: .
+ * get_command_from_file - This function reads a command from a file.
+ * @file: The name of the file from which the command is to be read.
+ *
+ * Return: A pointer to the file name.
  */
 
 char *get_command_from_file(char *file)

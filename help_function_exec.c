@@ -57,7 +57,7 @@ char **get_av_with_flags(char *line, int status)
 		return (NULL);
 	line_cpy = _strdup(line);
 	if (line_cpy == NULL)
-		return (NULL); /*can't cpy*/
+		return (NULL);
 	c_count = char_count(line_cpy, ' ');
 	av = malloc((c_count + 1) * sizeof(char *));
 	token = _strtok(line_cpy, TOK_D);
