@@ -1,13 +1,14 @@
 #include "shell.h"
 
-/*will edit betty soon*/
 /**
- * get_av_with_flags_helper - .
- * @token: .
- * @line: .
- * @av: .
- * @status: .
- * Return: .
+ * get_av_with_flags_helper - func helps to process tokens in a command line.
+ * @token: The token extracted from the command line.
+ * @line: Represents the original command line.
+ * @av: An array of strings to be used in storing processed tokens.
+ * @status: Exiting status of the previous command.
+ *
+ * Return: Pointer to a dynamically allocated string (cmd) that contains the
+ *         processed token, or NULL if there is an error.
 */
 
 char *get_av_with_flags_helper(char *token, char *line, char **av, int status)
@@ -39,10 +40,12 @@ char *get_av_with_flags_helper(char *token, char *line, char **av, int status)
 	return (cmd);
 }
 /**
- * get_av_with_flags - .
- * @line: .
- * @status: .
- * Return: .
+ * get_av_with_flags - This parses a command line into an array of strings.
+ * @line: The input command line needed to be parsed.
+ * @status: The exit status of the previous command line.
+ *
+ * Return: A pointer to a dynamically allocated array of strings of the parsed
+ *         command line, or NULL if an error occur or the input line is empty.
  */
 char **get_av_with_flags(char *line, int status)
 {
@@ -87,10 +90,12 @@ char **get_av_with_flags(char *line, int status)
 	free(line_cpy);
 	return (av);
 }
+
 /**
- * exit_check - .
- * @nread: .
- * @exit_cmd: .
+ * exit_check - Checks if the user entered an exit command or End of File.
+ * @nread: The return value of a read operation, typically used to detect EOF.
+ * @exit_cmd: The command entered by user for checking an exit command.
+ *
  * Return: void
  */
 void exit_check(int nread, char *exit_cmd)
@@ -111,9 +116,11 @@ void exit_check(int nread, char *exit_cmd)
 }
 
 /**
- * _getenv - .
- * @name: .
- * Return: .
+ * _getenv - Retrieves the value of an environment variable.
+ * @name: The name of the environment variable to be retrieved.
+ *
+ * Return: A pointer to the value of the environment variable 'name', or NULL
+ *         if the variable is not found or if 'name' is NULL.
  */
 
 char *_getenv(char *name)
@@ -139,10 +146,11 @@ char *_getenv(char *name)
 }
 
 /**
- * char_count - .
- * @str: .
- * @c: .
- * Return: .
+ * char_count - Counts num of occurrences of a char followed by another char.
+ * @str: A pointer to the null-terminated string to be searched within.
+ * @c: The character to be counted within the string.
+ *
+ * Return: Num of occurrences of 'c' followed by another char in the string.
  */
 
 unsigned int char_count(char *str, char c)
