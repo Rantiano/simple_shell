@@ -1,5 +1,6 @@
 This is 0x16. C - Simple Shell project task
 For ALX Software Engineering Student - Cohort 17
+
 Created by Ogunsanya Ranti and Vanessa Ramuhashi
 
 
@@ -197,3 +198,4 @@ Your shell can take a file as a command line argument
 The file contains all the commands that your shell should run before exiting
 The file should contain one command per line
 In this mode, the shell should not print a prompt and should not read from stdin
+
