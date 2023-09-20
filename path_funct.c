@@ -1,9 +1,11 @@
 #include "shell.h"
 /**
- * add_node - a function to modify the path
- * @head: the first node of the path
- * @path: .
- * Return: pointer
+ * add_node - function adds a new node to a linked list.
+ * @head: A pointer to a pointer to the first node of the linked list.
+ * @path: The string data to be stored in the new node.
+ *
+ * Return: A pointer to the newly added node if node creation and memory
+ *         allocation were successful, or NULL if otherwise.
  */
 
 list_path *add_node(list_path **head, char *path)
@@ -37,8 +39,8 @@ list_path *add_node(list_path **head, char *path)
 }
 
 /**
- * free_list - frees a list_t list.
- * @head: pointer to a head pointer
+ * free_list - frees a linked list of the list_path nodes.
+ * @head: pointer to a head pointer of the linked list.
  */
 void free_list(list_path *head)
 {
@@ -47,15 +49,19 @@ void free_list(list_path *head)
 	{
 		return;
 	}
+
 	free_list(head->next);
 	if (head->path)
 		free(head->path);
+
 	free(head);
 }
 
 /**
- * set_all_paths_to_list - .
- * Return: .
+ * set_all_paths_to_list - Extracts and stores all dir in the PATH environ var.
+ *
+ * Return: A pointer to head of the linked list containing PATH dir, or NULL
+ *         if the PATH environ variable isn't set or memory allocation fails.
  */
 list_path *set_all_paths_to_list()
 {
@@ -70,7 +76,7 @@ list_path *set_all_paths_to_list()
 
 	path_var_cpy = _strdup(path_variable);
 	if (path_var_cpy == NULL)
-		return (NULL); /*can't cpy*/
+		return (NULL);
 
 	token = _strtok(path_var_cpy, ":");
 	while (token != NULL)
@@ -78,12 +84,16 @@ list_path *set_all_paths_to_list()
 		add_node(&paths_list, token);
 		token = _strtok(NULL, ":");
 	}
+
 	free(path_var_cpy);
-	return (paths_list); /*does not have access*/
+
+	return (paths_list);
 }
+
 /**
- * set_all_vector_to_list - .
- * Return: .
+ * set_all_vector_to_list - Converts the environ var to a linked list of str.
+ *
+ * Return: A pointer to the head of a linked list containing environ var.
  */
 list_path *set_all_vector_to_list()
 {
@@ -103,14 +113,16 @@ list_path *set_all_vector_to_list()
 		add_node(&paths_list, path_var_cpy);
 		i++;
 	}
-	return (paths_list); /*does not have access*/
+	return (paths_list);
 }
 
 /**
- * check_access - .
- * @line_av_1: .
- * @current: .
- * Return: .
+ * check_access - Checks if a command is executable in any dir from the PATH.
+ * @line_av_1: The command to check for the executability.
+ * @current: A pointer to the head of a linked list containing dir from PATH.
+ *
+ * Return: A pointer to the full path of the executable command if found,
+ *         NULL if otherwise.
  */
 
 char *check_access(char *line_av_1, list_path *current)
@@ -123,7 +135,7 @@ char *check_access(char *line_av_1, list_path *current)
 	while (current)
 	{
 		len = _strlen(current->path) + _strlen(line_av_1) + 2;
-		/* to calculate the length of the full path*/
+
 		if (len > 1024)
 		{
 			write(STDERR_FILENO, "ERROR: Path too long\n", 21);
