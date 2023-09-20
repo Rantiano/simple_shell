@@ -1,12 +1,11 @@
 #include "shell.h"
 
 /**
- * print_error - .
- * @program_name: .
- * @counter: .
- * @command: .
- * @type_of_error: .
- * Return: void
+ * print_error - Prints an error message based on the specified type of error.
+ * @program_name: Name of the program where the error occurred.
+ * @counter: Counter or identifier representing the number of operations
+ * @command: Command or operation that caused the error.
+ * @type_of_error: Integer representing the specific type
  */
 
 void print_error(char *program_name, int counter,
@@ -37,14 +36,13 @@ void print_error(char *program_name, int counter,
 	free(counter_s);
 }
 
-
 /**
- * print_cant_open - .
- * @program_name: .
- * @counter: .
- * @file_name: .
- * Return: void
+ * print_cant_open - Prints an error message to show file couldn't be opened.
+ * @program_name: Name of the program where the error occurred.
+ * @counter: Counter or identifier representing the number of operations.
+ * @file_name: The name of the file that couldn't be opened.
  */
+
 void print_cant_open(char *program_name, int counter, char *file_name)
 {
 

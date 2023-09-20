@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * _strtok - .
- * @str: .
- * @delimiters: .
- * Return: .
+ * _strtok - Splits a string into tokens based on delimiter characters.
+ * @str: The string to be tokenized.
+ * @delimiters: characters that determine where to split the string.
+ * Return: A pointer to the next token, or NULL if there are no more tokens.
  */
 char *_strtok(char *str, const char *delimiters)
 {
@@ -12,10 +12,10 @@ char *_strtok(char *str, const char *delimiters)
 }
 
 /**
- * _chrCheck - .
- * @c: .
- * @str: .
- * Return: .
+ * _chrCheck - Checks if a character is present in a given string.
+ * @c: The character to be checked.
+ * @str: The string in which the character is to be searched.
+ * Return: number of occurrences of character, or 0 if not found.
  */
 unsigned int _chrCheck(char c, const char *str)
 {
@@ -41,14 +41,14 @@ void free_l_v(char *line, char **line_vector)
 }
 
 /**
- * is_dir - Entry point to the shell
- * @line: arguements count
- * @argv: arguements count
- * @counter: arguements count
- * @line_vector: arguements count
- * @status: arguements count
- * @old_line: arguements count
- * Return: is dir or not
+ * is_dir - Checks if the given path or name represents a directory.
+ * @line: The input line or path to be checked.
+ * @argv: Array of argument strings.
+ * @counter: Counter representing the number of arguments
+ * @line_vector: Vector of lines or paths related to the input.
+ * @status: Pointer to an integer representing the status
+ * @old_line: Previous input line or path for reference.
+ * Return: 1 if the given path or name is a directory, 0 otherwise.
  */
 int is_dir(char *line, char **argv, int counter, char **line_vector,
 		int *status, char *old_line)
