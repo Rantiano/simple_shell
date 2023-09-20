@@ -1,18 +1,19 @@
 #include "shell.h"
 
 /**
- * main - Entry point to the shell
- * @argc: arguements count
- * @argv: arguements values
- * @env: environment vector
- * Return: the process
+ * main - function serves as the entry point for the shell program.
+ * @argc: The number of command-line arguments (arguments count).
+ * @argv: An array of strings containing the command-line argument values.
+ * @env: Array of environment variables.
+ *
+ * Return: Exit status of the shell process.
  */
 int main(int argc, char *argv[], char *env[])
 {
 	int mode, counter = 0, *status, t = 0, non_int_count = 1;
 	char *line, **line_vector = NULL, **lines = NULL;
 	list_path *current;
-	/*mode checking*/
+
 	status = &t;
 	mode = check_mode(argc);
 	if (mode != INTERACTIVE)
@@ -50,10 +51,12 @@ int main(int argc, char *argv[], char *env[])
 	free_list(current);
 	exit(*status);
 }
+
 /**
- * print_list - print list of strings
+ * print_list - print the list of strings represented as a linked list.
  * @p: refrance of list_t "linked list of strings"
- * Return: list size
+ *
+ * Return: The size of the linked list.
  */
 size_t print_list(const list_path *p)
 {
@@ -83,17 +86,13 @@ size_t print_list(const list_path *p)
 	return (size);
 }
 
-
 /**
- * set_list_env - print list of strings
+ * set_list_env - Set the environment variables from a linked list of strings.
  * @p: refrance of list_t "linked list of strings"
  * Return: list size
  */
 void set_list_env(list_path *p)
 {
-	/*
-	*Freeeeeeeeeeeeeeeeeeeeee
-	 */
 	int size;
 	int list_size;
 	char **env;
@@ -111,7 +110,6 @@ void set_list_env(list_path *p)
 	}
 	while (p)
 	{
-		/*reverce here*/
 		if (p->path != NULL)
 		{
 			env[size++] = p->path;
@@ -124,8 +122,9 @@ void set_list_env(list_path *p)
 
 
 /**
- * env_list_len - print list of strings
+ * env_list_len - Gets the length of a linked list of strings.
  * @p: refrance of list_t "linked list of strings"
+ *
  * Return: list size
  */
 size_t env_list_len(const list_path *p)
@@ -147,6 +146,7 @@ size_t env_list_len(const list_path *p)
 	else
 		return (0);
 }
+
 /**
  * is_not_built_in - Entry point to the shell
  * @line_vector: arguements count
