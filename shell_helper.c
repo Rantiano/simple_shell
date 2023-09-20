@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * check_mode - .
- * @argc: arguements count
- * Return: mode
+ * check_mode - Checks mode of operation based on the number of arguments.
+ * @argc: Count of arguments provided to the program
+ * Return: integer representing the mode of operation.
  */
 int check_mode(int argc)
 {
@@ -21,16 +21,15 @@ int check_mode(int argc)
 }
 
 /**
- * is_exit - .
- * @line: .
- * @line_vector: .
- * @current: .
- * @program_name: .
- * @counter: .
- * @status: .
- * @env: .
- * @lines: .
- * Return: void
+ * is_exit - Checks if the given input is an "exit" command
+ * @line: The input line or command to be checked.
+ * @line_vector: Vector of lines or commands
+ * @current: Pointer to the current path
+ * @program_name: Name of the program being executed.
+ * @counter: Counter representing the number of commands performed.
+ * @status: Pointer to an integer representing the status
+ * @env: Pointer to the environment variables or settings.
+ * @lines: Array of previous input lines or commands
  */
 
 void is_exit(char *line, char **line_vector, list_path *current,
@@ -69,11 +68,11 @@ void is_exit(char *line, char **line_vector, list_path *current,
 		}
 	}
 }
+
 /**
- * _atoi - .
- * @s: .
- * Return: .
- *
+ * _atoi - Converts a string to an integer.
+ * @s: Pointer to the string to be converted.
+ * Return: The integer representation of the string.
  */
 int _atoi(char *s)
 {
@@ -102,12 +101,11 @@ int _atoi(char *s)
 }
 
 /**
- * execute_command - .
- * @path: .
- * @av: .
- * @env: .
- * @status: .
- * Return: void
+ * execute_command - Executes a command using the given path,
+ * @path: Path to the command or executable to be run.
+ * @av: Array of arguments to be passed to the command.
+ * @env: Array of environment variables to be set for the command.
+ * @status: Pointer to an integer representing the status
  */
 
 void execute_command(char *path, char **av, char **env, int *status)
@@ -134,11 +132,9 @@ void execute_command(char *path, char **av, char **env, int *status)
 }
 
 /**
- * free_vector - .
- * @argv: .
- * Return: void
+ * free_vector - Frees the memory allocated for a vector
+ * @argv: Pointer to the array of strings to be freed.
  */
-
 void free_vector(char **argv)
 {
 	char **curr;
