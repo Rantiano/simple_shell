@@ -2,11 +2,12 @@
 #include <unistd.h>
 #include "shell.h"
 /**
- * _getlineHelper - .
- * @lineptr: .
- * @n: .
- * @stream: .
- * Return: .
+ * _getlineHelper - This function helps to initialize the getline function.
+ * @lineptr: Pointer to a pointer to the buff used by getline to store line.
+ * @n: A pointer to a size_t variable that holds the size of the buffer.
+ * @stream: Shows an unused parameter.
+ *
+ * Return: 0 on success, or -1 on failure with memory allocation error.
  */
 ssize_t _getlineHelper(char **lineptr, size_t *n,
 		__attribute__((unused)) FILE * stream)
@@ -24,10 +25,11 @@ ssize_t _getlineHelper(char **lineptr, size_t *n,
 }
 
 /**
- * _getline - .
- * @lineptr: .
- * @n: .
- * @stream: .
+ * _getline - This reads a line of the text from a stream.
+ * @lineptr: A pointer to a pointer to the buffer used for storing the line.
+ * @n: A pointer to a size_t variable that holds the size of the buffer.
+ * @stream: A pointer to a FILE stream.
+ *
  * Return: .
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)

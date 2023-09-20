@@ -1,7 +1,9 @@
 #include "shell.h"
+
 /**
- * handle_comments - .
- * @line: .
+ * handle_comments - Handles removal of comments from a line of text.
+ * @line: A pointer to a null-terminated string containing the line of text.
+ *
  * Return: void
  */
 void handle_comments(char *line)
@@ -35,10 +37,11 @@ void handle_comments(char *line)
 }
 
 /**
- * _cd - .
- * @line_vector: .
- * @argv: .
- * Return: .
+ * _cd - Changes the current working directory.
+ * @line_vector: An array of strings containing the command and its arguments.
+ * @argv: The array of strings containing the command-line arguments.
+ *
+ * Return: 0 if the directory change is successful, 1 otherwise.
  */
 int _cd(char **line_vector, char **argv)
 {
@@ -77,17 +80,16 @@ int _cd(char **line_vector, char **argv)
 	return (0);
 }
 
-
 /**
- * free_all - .
- * @lines: .
- * @counter: .
- * @env: .
- * @current: .
- * @line: .
- * @line_vector: .
- * Return: .
+ * free_all - Frees the allocated memory and the resources used by the shell.
+ * @lines: An array of strings with user input lines.
+ * @counter: An integer that represents the number of user input lines.
+ * @env: A linked list of environ variables.
+ * @current: A linked list that represents the current working directory.
+ * @line: A pointer to a string that contains the last user input line.
+ * @line_vector: An array of strings that contains the tokenized user input.
  *
+ * Return: void
  */
 void free_all(char **lines, int counter, list_path *env,
 		list_path *current, char *line, char **line_vector)
